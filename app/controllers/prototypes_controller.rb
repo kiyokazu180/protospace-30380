@@ -11,8 +11,8 @@ def new
 end
 
 def create
-  if
-  Prototype.create(strong_method)
+  @prototype = Prototype.create(strong_method)
+  if @prototype.save
     redirect_to root_path
   else
     render :new
@@ -39,11 +39,11 @@ def edit
 end
 
 def update
-  prototype = Prototype.find(params[:id])
-  if prototype.update(strong_method)
-    redirect_to prototype_path
+  @prototype = Prototype.find(params[:id])
+  if @prototype.update(strong_method)
+     redirect_to prototype_path
   else
-    render :edit
+     render :edit
   end
 end
 
